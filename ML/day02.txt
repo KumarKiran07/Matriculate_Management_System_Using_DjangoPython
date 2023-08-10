@@ -1,0 +1,6 @@
+slicing and dicing 
+pivot(rotating)
+opal operation
+star schema 
+snowflake schema
+fact constellation

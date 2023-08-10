@@ -1,0 +1,37 @@
+average measure:-avg()= sum()+count().
+destibuted measure:- sum(), avg(). 
+algebraic measure 
+holistic measure:- mean(), medium(), mode().
+
+DW applications:- 1. information processing
+		  2. anlytical processing 
+		  3. data mining .
+
+Data generalization by attribute oriented inducation :- data by replace low level value to high level value (eg:- young; mind-age; seniors)
+
+Practical:
+
+Loweracse:- awards.columns  = awards.columns.str.lower()
+
+Upperacse:- awards.columns  = awards.columns.str.upper()
+
+Rename:- awards = awards.rename(columns= {'PROG':'PROGRAM'})
+
+drop value :- awards_drop1 = awards.dropna(axis=1)
+
+	   :- awards_test = awards.dropna(thresh=3)
+
+Delete particular columns NAN values:- awards_test3 = awards.dropna(subset=['NUM_AWARDS','MATH'])
+
+Insert value(0) where NAN :- awards_new = awards.fillna(0)
+
+Check value using True and false(True-NAN value and False-value is already inserted): - awards.isna
+
+create a chart in machine learning:
+	1. plot: -graph.plot(x="product", y=['profit','loss'])
+	2. 
+
+contingency table: - from scipy.stats import chi2_contingency (lib.)
+		   : contingency = pd.crosstab(chi['Gender'], chi['isSmoker'])
+
+

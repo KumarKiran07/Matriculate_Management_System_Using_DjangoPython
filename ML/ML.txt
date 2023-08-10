@@ -1,0 +1,1 @@
+pip install --upgrade jupyter matplotlib numpy pandas scipy scikit-learn
