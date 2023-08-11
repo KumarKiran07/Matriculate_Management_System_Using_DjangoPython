@@ -34,4 +34,87 @@ create a chart in machine learning:
 contingency table: - from scipy.stats import chi2_contingency (lib.)
 		   : contingency = pd.crosstab(chi['Gender'], chi['isSmoker'])
 
+{
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+temp = pd.read_csv('LR_dataset.csv')
+temp
+temp.shape
+plt.xlabel('age')
+plt.ylabel('Obesity')
+plt.scatter(temp.age, temp.Obesity, color='red', marker='*')
+new_temp = temp.drop('age', axis='columns')
+new_temp
+model = linear_model.LinearRegression()
+model.fit(new_temp,temp.age)
+model.predict([[200]])
+}
+
+
+{
+import pandas as pd
+from scipy.stats import chi2_contingency 
+chi = pd.read_csv('chi_square.csv')
+chi
+contingency = pd.crosstab(chi['Gender'], chi['isSmoker'])
+contingency
+#accuracy level p = calculatevalue
+alpha = 1.0
+from scipy.stats import chi2_contingency
+chi2, p , dof, e = chi2_contingency(contingency)
+if p > alpha:
+    print('reject_H0')
+else:
+    print('accept_H0')
+}
+
+
+{
+import pandas as pd
+from apyori import apriori
+temp1 = pd.read_csv('apriori.csv')
+temp1
+records= []
+for i in range(0,22):
+    records.append([str(temp1.values[i,j]) for j in range(0,6)])
+    
+from apyori import apriori
+association_rules = apriori(records, min_support=0.50,min_confidence=0, min_lift=1.2, min_length=2)
+
+association_result = list(association_rules)
+association_result
+
+}
+
+{
+import pandas as pd
+from sklearn import metrics
+
+decision = pd.read_csv('D:\KIRAN\decisionTree_Data.csv')
+x= decision.iloc[:,[0,1]].values
+y = decision.iloc[:,2].values
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size= 0.90, random_state=0)
+
+from sklearn.preprocessing import StandardScaler
+st_x = StandardScaler()
+x_train=st_x.fit_transform(x_train)
+x_test = st_x.transform(x_test)
+
+from sklearn.tree import DecisionTreeClassifier
+classifier = DecisionTreeClassifier(criterion='entropy', random_state=0)
+classifier.fit(x_train, y_train)
+
+y_pred = classifier.predict(x_test)
+y_pred
+
+from sklearn.metrics import confusion_matrix
+cm= confusion_matrix(y_test, y_pred)
+cm
+
+print('Accuracy:', metrics.accuracy_score(y_test,y_pred))
+}
+
 
